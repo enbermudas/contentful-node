@@ -26,10 +26,12 @@ app.use(
   }),
 );
 
+app.use(methodOverride('X-HTTP-Method-Override'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(compression());
 app.use(cors());
 app.use(helmet());
-app.use(methodOverride('X-HTTP-Method-Override'));
 app.use('/api', routes);
 
 export default app;
