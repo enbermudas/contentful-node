@@ -39,7 +39,7 @@ class Request {
     });
   }
 
-  get(path: string) {
+  get(path: string): Promise<any> {
     return this.deliveryRequest.get(path);
   }
 }
