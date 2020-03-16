@@ -1,5 +1,5 @@
 import { createLogger, format, transports } from 'winston';
-import { NODE_ENV, LOG_LEVEL } from './env';
+import { NODE_ENV, LOG_LEVEL } from 'config/env';
 
 const formatParams = info => {
   const { timestamp, level, message, ...args } = info;
