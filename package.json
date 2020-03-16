@@ -6,7 +6,16 @@
   "repository": "https://github.com/enbermudas/contentful-node.git",
   "author": "Enrique Bermúdez <enbermudez96@gmail.com>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.21.3",
+    "method-override": "^3.0.0",
+    "morgan": "^1.9.1",
+    "winston": "^3.2.1"
+  },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.7",

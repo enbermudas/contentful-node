@@ -1,6 +1,9 @@
-// @flow
+import app from './config/express';
+import logger from './config/logger';
+import { NODE_ENV, HOST, PORT } from './config/env';
 
-const sayHi = (name: string): string => `Hello, ${name}!`;
+const server = app.listen(PORT, () => {
+  logger.info(`Server running on http://${HOST}:${PORT} [${NODE_ENV}]`);
+});
 
-const msg = sayHi('John Doe');
-console.log(msg); // eslint-disable-line no-console
+module.exports = server;
