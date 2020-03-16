@@ -5,7 +5,7 @@ import helmet from 'helmet';
 import methodOverride from 'method-override';
 import morgan from 'morgan';
 import { NODE_ENV } from 'config/env';
-import routes from '../router';
+import routes from 'router';
 
 const app = express();
 

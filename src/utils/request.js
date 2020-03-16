@@ -1,4 +1,6 @@
-import axios from 'axios';
+// @flow
+
+import axios, { AxiosInstance } from 'axios';
 import {
   CONTENTFUL_MANAGEMENT_URL,
   CONTENTFUL_DELIVERY_URL,
@@ -9,6 +11,14 @@ import {
 } from 'config/env';
 
 class Request {
+  managementURL: string;
+
+  deliveryURL: string;
+
+  managementRequest: AxiosInstance;
+
+  deliveryRequest: AxiosInstance;
+
   constructor() {
     this.managementURL = `${CONTENTFUL_MANAGEMENT_URL}/spaces/${CONTENTFUL_SPACE_ID}/environments/${CONTENTFUL_ENVIRONMENT}/`;
     this.deliveryURL = `${CONTENTFUL_DELIVERY_URL}/spaces/${CONTENTFUL_SPACE_ID}/environments/${CONTENTFUL_ENVIRONMENT}/`;
@@ -29,7 +39,7 @@ class Request {
     });
   }
 
-  get(path) {
+  get(path: string) {
     return this.deliveryRequest.get(path);
   }
 }
