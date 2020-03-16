@@ -32,4 +32,4 @@ app.use(helmet());
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use('/api', routes);
 
-module.exports = app;
+export default app;

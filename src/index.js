@@ -6,4 +6,4 @@ const server = app.listen(PORT, () => {
   logger.info(`Server running on http://${HOST}:${PORT} [${NODE_ENV}]`);
 });
 
-module.exports = server;
+export default server;

@@ -23,16 +23,16 @@ const productionFormat = format.combine(
   format.printf(formatParams),
 );
 
-let logger;
+let configuration;
 
 if (NODE_ENV !== 'production') {
-  logger = createLogger({
+  configuration = createLogger({
     level: LOG_LEVEL,
     format: developmentFormat,
     transports: [new transports.Console()],
   });
 } else {
-  logger = createLogger({
+  configuration = createLogger({
     level: LOG_LEVEL,
     format: productionFormat,
     transports: [
@@ -41,5 +41,7 @@ if (NODE_ENV !== 'production') {
     ],
   });
 }
+
+const logger = configuration;
 
 module.exports = logger;
