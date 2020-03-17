@@ -50,6 +50,6 @@
     "eslint": "eslint 'src/**/*.js' --fix",
     "lint": "yarn eslint && flow",
     "start": "node dist/",
-    "test": "jest"
+    "test": "jest --config jest.config.js"
   }
 }
