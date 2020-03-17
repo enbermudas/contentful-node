@@ -1,15 +1,19 @@
 import request from 'supertest';
-import app from '../src/config/express';
-
-const server = app.listen(3000);
+import server from 'src';
 
 afterAll(() => server.close());
 
 describe('Server', () => {
-  test('it should start the server', async () => {
+  it('Should return the api status json', async () => {
     const res = await request(server).get('/api/status');
 
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty('status');
+  });
+
+  it('Should return a 404 error', async () => {
+    const res = await request(server).get('/api/this-does-not-exists');
+
+    expect(res.statusCode).toEqual(404);
   });
 });
