@@ -14,7 +14,6 @@ jobs:
             - v1-dependencies-
 
       - run: yarn install
-      - run: yarn global add codecov
 
       - save_cache:
           paths:
@@ -22,4 +21,4 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: yarn test
-      - run: codecov
+      - run: yarn report-coverage

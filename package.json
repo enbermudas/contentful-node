@@ -31,6 +31,7 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "codecov": "^3.6.5",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-config-prettier": "^6.10.0",
@@ -49,6 +50,7 @@
     "dev": "nodemon --exec babel-node ./src/index.js",
     "eslint": "eslint 'src/**/*.js' --fix",
     "lint": "yarn eslint && flow",
+    "report-coverage": "codecov",
     "start": "node dist/",
     "test": "jest --config jest.config.js"
   }
