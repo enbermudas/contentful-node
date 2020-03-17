@@ -10,7 +10,7 @@ import routes from 'router';
 const app = express();
 
 let morganFormat = 'dev';
-if (NODE_ENV === 'production') morganFormat = 'combined';
+if (NODE_ENV !== 'development') morganFormat = 'combined';
 
 app.use(
   morgan(morganFormat, {
