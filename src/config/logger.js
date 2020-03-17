@@ -23,25 +23,21 @@ const productionFormat = format.combine(
   format.printf(formatParams),
 );
 
-let configuration;
+const logger = createLogger({
+  level: LOG_LEVEL,
+  format: productionFormat,
+  transports: [
+    new transports.File({ filename: 'error.log', level: 'error' }),
+    new transports.File({ filename: 'combined.log' }),
+  ],
+});
 
 if (NODE_ENV !== 'production') {
-  configuration = createLogger({
-    level: LOG_LEVEL,
-    format: developmentFormat,
-    transports: [new transports.Console()],
-  });
-} else {
-  configuration = createLogger({
-    level: LOG_LEVEL,
-    format: productionFormat,
-    transports: [
-      new transports.File({ filename: 'error.log', level: 'error' }),
-      new transports.File({ filename: 'combined.log' }),
-    ],
-  });
+  logger.add(
+    new transports.Console({
+      format: developmentFormat,
+    }),
+  );
 }
-
-const logger = configuration;
 
 module.exports = logger;
