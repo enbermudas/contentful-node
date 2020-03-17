@@ -1,11 +1,32 @@
-version: 2
+defaults: &defaults
+  docker:
+    - image: circleci/node:lts-stretch
+  working_directory: ~/repo
+
+version: 2.1
+
+orbs:
+  codecov: codecov/codecov@1.0.5
 
 jobs:
-  build:
-    docker:
-      - image: circleci/node:lts-stretch
-    working_directory: ~/repo
+  checkout_code:
+    <<: *defaults
+    steps:
+      - restore_cache:
+          keys:
+            - source-{{ .Branch }}-{{ .Revision }}
+            - source-{{ .Branch }}-
+            - source-
 
+      - checkout
+
+      - save_cache:
+          key: source-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - '~/repo'
+
+  install_dependencies:
+    <<: *defaults
     steps:
       - checkout
       - restore_cache:
@@ -20,5 +41,88 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+  lint:
+    <<: *defaults
+    steps:
+      - restore_cache:
+          key: source-{{ .Branch }}-{{ .Revision }}
+      - restore_cache:
+          key: depens-{{ checksum "package.json" }}
+      - run: yarn lint
+
+  test:
+    <<: *defaults
+    steps:
+      - restore_cache:
+          key: source-{{ .Branch }}-{{ .Revision }}
+      - restore_cache:
+          key: depens-{{ checksum "package.json" }}
       - run: yarn test
-      - run: yarn report-coverage
+
+  build:
+    <<: *defaults
+    steps:
+      - restore_cache:
+          key: source-{{ .Branch }}-{{ .Revision }}
+      - restore_cache:
+          key: depens-{{ checksum "package.json" }}
+
+      - run: yarn build
+
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - dist
+            - package.json
+
+  coverage:
+    <<: *defaults
+    steps:
+      - restore_cache:
+          key: source-{{ .Branch }}-{{ .Revision }}
+      - restore_cache:
+          key: depens-{{ checksum "package.json" }}
+      - run: yarn test --coverage
+
+  codecov:
+    <<: *defaults
+    steps:
+      - restore_cache:
+          key: source-{{ .Branch }}-{{ .Revision }}
+      - restore_cache:
+          key: depens-{{ checksum "package.json" }}
+      - run: yarn test --coverage --watchAll=false
+      - codecov/upload:
+          file: coverage/*.json
+          token: 96cc3e86-4464-4621-a4a9-e602ee3a73bc
+
+workflows:
+  version: 2
+  lint_and_build:
+    jobs:
+      - checkout_code
+      - install_dependencies:
+          requires:
+            - checkout_code
+      - lint:
+          requires:
+            - install_dependencies
+      - build:
+          requires:
+            - lint
+
+  test_and_coverage:
+    jobs:
+      - checkout_code
+      - install_dependencies:
+          requires:
+            - checkout_code
+      - test:
+          requires:
+            - install_dependencies
+      - coverage:
+          requires:
+            - test
+      - codecov:
+          requires:
+            - test
