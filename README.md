@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![enbermudas](https://circleci.com/gh/enbermudas/contentful-node.svg?style=shield)](https://circleci.com/gh/enbermudas/contentful-node)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ec822a564b474571a1c4e04370988646)](https://app.codacy.com/manual/enbermudez96/contentful-node?utm_source=github.com&utm_medium=referral&utm_content=enbermudas/contentful-node&utm_campaign=Badge_Grade_Dashboard)
+[![codecov](https://codecov.io/gh/enbermudas/contentful-node/branch/master/graph/badge.svg)](https://codecov.io/gh/enbermudas/contentful-node)
 [![jest](https://jestjs.io/img/jest-badge.svg)](https://github.com/facebook/jest)
 
 Contentful integration with node.
