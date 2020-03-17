@@ -16,25 +16,25 @@ yarn # npm install
 ## Start development server
 
 ```bash
-yarn dev #npm run dev
+yarn dev # npm run dev
 ```
 
 ## Code linting
 
 ```bash
-yarn lint #npm run lint
+yarn lint # npm run lint
 ```
 
 ## Run tests
 
 ```bash
-yarn test #npm run test
+yarn test # npm run test
 ```
 
 ## Build for production
 
 ```bash
-yarn build #npm run build
+yarn build # npm run build
 ```
 
 ## License
