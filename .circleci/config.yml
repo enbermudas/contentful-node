@@ -28,18 +28,17 @@ jobs:
   install_dependencies:
     <<: *defaults
     steps:
-      - checkout
+      - restore_cache:
+          key: source-{{ .Branch }}-{{ .Revision }}
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-
+            - depens-{{ checksum "package.json" }}
+            - depens-
       - run: yarn install
-
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: depens-{{ checksum "package.json" }}
 
   lint:
     <<: *defaults
