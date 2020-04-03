@@ -2,71 +2,71 @@
 
 ### Publicidad
 
-- Banner
-- Estado
+-   Banner
+-   Estado
 
 ##### Endpoints
 
-- Detalle
+-   Detalle
 
----
+* * *
 
 ### Plan
 
-- Título
-- Estado
-- 1xN (Features)
+-   Título
+-   Estado
+-   1xN (Features)
 
 ##### Endpoints
 
-- Listar
-- Detalle
+-   Listar
+-   Detalle
 
----
+* * *
 
 ### Feature
 
-- Imagen
-- Texto
-- Nx1 (Plan)
+-   Imagen
+-   Texto
+-   Nx1 (Plan)
 
 ##### Endpoints
 
-- Listar -> Plan
+-   Listar -> Plan
 
----
+* * *
 
 ### Vídeo
 
-- Media
+-   Media
 
 ##### Endpoints
 
-- Listar
+-   Listar
 
----
+* * *
 
 ### Oferta
 
-- Imagen
-- Título
-- Costo
-- Descripción
+-   Imagen
+-   Título
+-   Costo
+-   Descripción
 
 ##### Endpoints
 
-- Listar
-- Detalle
+-   Listar
+-   Detalle
 
----
+* * *
 
 ### Artículo
 
-- Imagen (Principal)
-- Imágenes (Texto)
-- Texto
+-   Imagen (Principal)
+-   Imágenes (Texto)
+-   Texto
 
 #### Endpoints
 
-- Listar
-- Detalle
+-   Listar
+-   Detalle
