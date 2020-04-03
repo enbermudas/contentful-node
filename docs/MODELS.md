@@ -8,6 +8,7 @@
 ##### Endpoints
 
 -   Detalle
+-   Actualizar Estado
 
 * * *
 
